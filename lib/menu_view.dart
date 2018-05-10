@@ -37,10 +37,9 @@ class _MenuListItem extends ListTile {
   _MenuListItem(Menu menu) :
         super(
           title : new Text(menu.name, style: new TextStyle(fontSize: 20.0, fontStyle: FontStyle.italic, fontWeight: FontWeight.bold)),
-          subtitle: new Text(menu.description.substring(0,80)+'...'),
-          trailing:
-            new Text(menu.price.toString()+'€', style: new TextStyle(fontSize: 22.0),)
-        );
+          subtitle: new Text(menu.description.substring(0,70)+'...'),
+          trailing: new Text(menu.price.toString()+'€', style: new TextStyle(fontSize: 22.0))
+          );
 }
 /*
           leading: new CircleAvatar(

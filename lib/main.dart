@@ -38,16 +38,16 @@ class StatelessWidgetExample extends StatelessWidget {
 */
 
 //Widget Inmutable
-class StatefulWidgetExample extends StatefulWidget {
+/*class StatefulWidgetExample extends StatefulWidget {
   final String _appBarTitle;
 
   StatefulWidgetExample(this._appBarTitle, { Key key }) : super(key: key);
 
   @override
   _StatefulWidgetExampleState createState() => new _StatefulWidgetExampleState(_appBarTitle);
-}
+}*/
 
-class _StatefulWidgetExampleState extends State<StatefulWidgetExample> {
+/*class _StatefulWidgetExampleState extends State<StatefulWidgetExample> {
   final String _appBarTitle;
 
   int _counter = 0;
@@ -76,4 +76,4 @@ class _StatefulWidgetExampleState extends State<StatefulWidgetExample> {
         )
     );
   }
-}
+}*/
