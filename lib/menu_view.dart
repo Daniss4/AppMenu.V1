@@ -37,10 +37,15 @@ class _MenuListItem extends ListTile {
 
   _MenuListItem(Menu menu) :
         super(
-          title : new Text(menu.name),
-          subtitle: new Text(menu.description.substring(0,45)+'...'),
+          title : new Text(menu.name, style: new TextStyle(fontSize: 19.0),),
+          subtitle: new Text(menu.description.substring(0,80)+'...'),
+          trailing:
+            new Text(menu.price, style: new TextStyle(fontSize: 19.0),)
+        );
+}
+
+/*
           leading: new CircleAvatar(
               child: new Text(menu.price,style: new TextStyle(fontSize: 11.5)),
           )
-        );
-}
+ */
