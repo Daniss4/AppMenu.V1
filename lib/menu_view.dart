@@ -22,7 +22,7 @@ class MenuList extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return new ListView(
-      padding: new EdgeInsets.symmetric(vertical: 7.0),
+      padding: new EdgeInsets.symmetric(vertical: 13.0),
       children: _buildMenuList()
     );
   }
@@ -30,20 +30,18 @@ class MenuList extends StatelessWidget{
   List<_MenuListItem> _buildMenuList(){
     return _menus.map((menu) => _MenuListItem(menu)).toList();
   }
-
 }
 
 class _MenuListItem extends ListTile {
 
   _MenuListItem(Menu menu) :
         super(
-          title : new Text(menu.name, style: new TextStyle(fontSize: 19.0),),
+          title : new Text(menu.name, style: new TextStyle(fontSize: 20.0, fontStyle: FontStyle.italic, fontWeight: FontWeight.bold)),
           subtitle: new Text(menu.description.substring(0,80)+'...'),
           trailing:
-            new Text(menu.price, style: new TextStyle(fontSize: 19.0),)
+            new Text(menu.price.toString()+'€', style: new TextStyle(fontSize: 22.0),)
         );
 }
-
 /*
           leading: new CircleAvatar(
               child: new Text(menu.price,style: new TextStyle(fontSize: 11.5)),
