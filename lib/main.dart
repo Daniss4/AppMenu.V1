@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: new StatefulWidgetExample("Carta"),
+      home: new IndexWidget("Carta"),
     );
   }
 }

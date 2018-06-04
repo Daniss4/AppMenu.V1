@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:appmenu/drink_view.dart';
 import 'package:appmenu/food_view.dart';
 
-class StatefulWidgetExample extends StatefulWidget {
+class IndexWidget extends StatefulWidget {
   final String _appBarTitle;
 
-  StatefulWidgetExample(this._appBarTitle, { Key key }) : super(key: key);
+  IndexWidget(this._appBarTitle, { Key key }) : super(key: key);
 
   @override
-  _StatefulWidgetExampleState createState() => new _StatefulWidgetExampleState(_appBarTitle);
+  _IndexWidget createState() => new _IndexWidget(_appBarTitle);
 }
 
-class _StatefulWidgetExampleState extends State<StatefulWidgetExample> {
+class _IndexWidget extends State<IndexWidget> {
   final String _appBarTitle;
 
 
-  _StatefulWidgetExampleState(this._appBarTitle);
+  _IndexWidget(this._appBarTitle);
 
 
   @override
