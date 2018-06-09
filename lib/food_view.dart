@@ -37,7 +37,6 @@ class _FoodListItem extends ListTile {
   _FoodListItem(Food food) :
         super(
           title : new Text(food.name, style: new TextStyle(fontSize: 20.0, fontStyle: FontStyle.italic, fontWeight: FontWeight.bold)),
-          subtitle: new Text(food.description.substring(0,70)+'...'),
           trailing: new Text(food.price.toStringAsFixed(2)+'€', style: new TextStyle(fontSize: 22.0))
           );
 }
