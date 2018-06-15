@@ -1,45 +1,45 @@
 import 'package:flutter/material.dart';
-import 'package:appmenu/drink_view.dart';
 import 'package:appmenu/food_view.dart';
+import 'package:appmenu/drink_view.dart';
 
 class IndexWidget extends StatefulWidget {
-  final String _appBarTitle;
+  final String table;
 
-  IndexWidget(this._appBarTitle, { Key key }) : super(key: key);
+  IndexWidget({ Key key, this.table }) : super(key: key);
 
   @override
-  _IndexWidget createState() => new _IndexWidget(_appBarTitle);
+  _IndexWidget createState() => new _IndexWidget();
 }
 
 class _IndexWidget extends State<IndexWidget> {
-  final String _appBarTitle;
-
-
-  _IndexWidget(this._appBarTitle);
 
 
   @override
   Widget build(BuildContext context) {
+    String _tab = ('${widget.table}');
+    print(_tab);
     return new Scaffold(
       appBar: new AppBar(
-          title: new Text(this._appBarTitle)
+        title: new Text("Carta"),
+        centerTitle: true,
+        backgroundColor: Colors.greenAccent,
       ),
-      body: new Center(
+        body: new Center(
         child:
         new Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             new Container(
-              margin: const EdgeInsets.only(top: 250.0),
               child:
-              new MaterialButton(
+              new RaisedButton(
                 child: new Text('Platos'),
                 onPressed: _platos
               )
             ),
             new Container(
-              margin: const EdgeInsets.only(top: 15.0),
+              margin: const EdgeInsets.only(top: 12.0),
               child:
-              new MaterialButton(
+              new RaisedButton(
                 child: new Text('Bebidas'),
                 onPressed: _bebidas
               )
@@ -53,23 +53,22 @@ class _IndexWidget extends State<IndexWidget> {
   void _platos() {
     Navigator.of(context).push(
       new MaterialPageRoute(
-          builder: (context){
-            return new Scaffold(
-              body: FoodsPage(),
-            );
-          })
+        builder: (context){
+          return new Scaffold(
+            body: FoodsPage(),
+          );
+        })
     );
   }
 
   void _bebidas() {
     Navigator.of(context).push(
-        new MaterialPageRoute(
-            builder: (context){
-              return new Scaffold(
-                body: DrinksPage(),
-              );
-            })
+      new MaterialPageRoute(
+        builder: (context){
+          return new Scaffold(
+            body: DrinksPage(),
+          );
+        })
     );
   }
-
 }
