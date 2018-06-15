@@ -1,3 +1,4 @@
+import 'package:appmenu/shopping_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:appmenu/food_view.dart';
 import 'package:appmenu/drink_view.dart';
@@ -17,12 +18,19 @@ class _IndexWidget extends State<IndexWidget> {
   @override
   Widget build(BuildContext context) {
     String _tab = ('${widget.table}');
-    print(_tab);
+
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("Carta"),
         centerTitle: true,
-        backgroundColor: Colors.greenAccent,
+        backgroundColor: Colors.lightGreen,
+        actions: <Widget>[
+          new IconButton(
+            icon: new Icon(Icons.add_shopping_cart),
+            onPressed: () {
+              Navigator.push(context, new MaterialPageRoute(builder: (context) => new ShoppingCart(table: _tab,)));
+            }),
+        ],
       ),
         body: new Center(
         child:

@@ -43,7 +43,7 @@ class _FoodsPageState extends State<FoodsPage> {
       appBar: new AppBar(
         title: Text("Platos"),
         centerTitle: true,
-        backgroundColor: Colors.orangeAccent,
+        backgroundColor: Colors.lightBlue,
         actions: <Widget>[
           new IconButton(
             icon: new Icon(Icons.local_bar),
@@ -76,6 +76,15 @@ class _FoodsPageState extends State<FoodsPage> {
           );
         }
       ),
+//      floatingActionButton: new FloatingActionButton(
+//        child: new Icon(Icons.add_shopping_cart),
+//        onPressed: (){
+//          Navigator.push(
+//              context,
+//              new MaterialPageRoute(builder: (context) => new ShoppingCart()));
+//        },
+//        backgroundColor: Colors.lightBlue,
+//      ),
     );
   }
 }

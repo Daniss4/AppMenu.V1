@@ -43,7 +43,7 @@ class _DrinksPageState extends State<DrinksPage> {
       appBar: new AppBar(
         title: Text("Bebidas"),
         centerTitle: true,
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: Colors.lightBlue,
         actions: <Widget>[
           new IconButton(
             icon: new Icon(Icons.local_pizza),
@@ -76,6 +76,15 @@ class _DrinksPageState extends State<DrinksPage> {
           );
         }
       ),
+//      floatingActionButton: new FloatingActionButton(
+//        child: new Icon(Icons.add_shopping_cart),
+//        onPressed: (){
+//          Navigator.push(
+//            context,
+//            new MaterialPageRoute(builder: (context) => new ShoppingCart()));
+//        },
+//        backgroundColor: Colors.lightBlue,
+//      ),
     );
   }
 }
