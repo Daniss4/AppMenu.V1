@@ -38,7 +38,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
 //    print(_table);
     return new Scaffold(
       appBar: AppBar(
-        title: Text("Carrito"),
+        title: Text("Pedido mesa $_num"),
         centerTitle: true,
         backgroundColor: Colors.orangeAccent,
       ),

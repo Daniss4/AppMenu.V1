@@ -14,14 +14,6 @@ class IndexWidget extends StatefulWidget {
 }
 
 class _IndexWidget extends State<IndexWidget> {
-  int _num;
-
-  @override
-  void initState() {
-    getNumPreference().then(updateNum);
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -49,10 +41,6 @@ class _IndexWidget extends State<IndexWidget> {
                 margin: const EdgeInsets.only(top: 12.0),
                 child: new RaisedButton(
                     child: new Text('Bebidas'), onPressed: _bebidas)),
-            new Container(
-              child: new RaisedButton(
-                  child: new Text(_num.toString()),onPressed: null),
-            )
           ]),
         ));
   }
@@ -71,11 +59,5 @@ class _IndexWidget extends State<IndexWidget> {
         body: DrinksPage(),
       );
     }));
-  }
-
-  void updateNum(int num) {
-    setState(() {
-      this._num = num;
-    });
   }
 }
