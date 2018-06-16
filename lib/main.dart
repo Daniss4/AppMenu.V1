@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:appmenu/index.dart';
+import 'package:flutter/material.dart';
 
 void main() {
   runApp(new MaterialApp(
@@ -7,7 +7,7 @@ void main() {
   ));
 }
 
-class Table{
+class Table {
   final String num;
 
   const Table(this.num);
@@ -20,13 +20,19 @@ class Index extends StatefulWidget {
 
 class _IndexState extends State<Index> {
   Table selectedTable;
-  List<Table> tables = <Table>[const Table('1'), const Table('2'), const Table('3'), const Table('4'), const Table('5')];
+  List<Table> tables = <Table>[
+    const Table('1'),
+    const Table('2'),
+    const Table('3'),
+    const Table('4'),
+    const Table('5')
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: new AppBar(
-          title: Text ('Mesa'),
+          title: Text('Mesa'),
           centerTitle: true,
           backgroundColor: Colors.lightGreen,
         ),
@@ -40,41 +46,36 @@ class _IndexState extends State<Index> {
               new Container(
                 margin: EdgeInsets.symmetric(horizontal: 25.5),
                 child: new DropdownButton<Table>(
-                  value: selectedTable,
-                  items: tables.map((Table table){
-                    return new DropdownMenuItem<Table>(
-                      value: table,
-                      child: new Text(
-                        table.num
-                      ),
-                    );
-                  }).toList(),
-                  onChanged: (Table newValue){
-                    setState(() {
-                      selectedTable = newValue;
-                    });
-                  }
-                ),
+                    value: selectedTable,
+                    items: tables.map((Table table) {
+                      return new DropdownMenuItem<Table>(
+                        value: table,
+                        child: new Text(table.num),
+                      );
+                    }).toList(),
+                    onChanged: (Table newValue) {
+                      setState(() {
+                        selectedTable = newValue;
+                      });
+                    }),
               ),
               new ListTile(
                 title: new RaisedButton(
-                  child: new Text('Continuar'),
-                  onPressed: () {
-                    var router = new MaterialPageRoute(
-                      builder: (BuildContext context) => new IndexWidget(table: selectedTable.num,)
-                    );
-                    if(selectedTable.num == ''){
-                      null;
-                    }else {
-                      Navigator.of(context).push(router);
-                    }
-                  }
-                ),
+                    child: new Text('Continuar'),
+                    onPressed: () {
+                      var router = new MaterialPageRoute(
+                          builder: (BuildContext context) => new IndexWidget(
+                                table: selectedTable.num,
+                              ));
+                      if (selectedTable.num == '') {
+                        null;
+                      } else {
+                        Navigator.of(context).push(router);
+                      }
+                    }),
               )
             ],
           ),
-        )
-    );
+        ));
   }
 }
-
