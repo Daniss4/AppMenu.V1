@@ -5,12 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
-  runApp(new MaterialApp( //El método 'runApp' se encarga de ejecutar el widget que se le indica
+  runApp(new MaterialApp(
+    //El método 'runApp' se encarga de ejecutar el widget que se le indica
     home: new Index(), //El atributo 'home:' es el que indica el widget
   ));
 }
 
-class Table { //Clase 'Table' definida para guardar la variable de la mesa elegida por el cliente
+class Table {
   final int num; //Variable 'num'
 
   const Table(this.num);
@@ -22,7 +23,6 @@ class Index extends StatefulWidget {
 }
 
 class _IndexState extends State<Index> {
-
   Table selectedTable;
   List<Table> tables = <Table>[
     const Table(1),
@@ -86,10 +86,9 @@ class _IndexState extends State<Index> {
     int num = selectedTable.num;
     var router = new MaterialPageRoute(
         builder: (BuildContext context) => new IndexWidget());
-    saveNumPreference(num).then((bool commited){
+    saveNumPreference(num).then((bool commited) {
       Navigator.of(context).push(router);
     });
-
   }
 }
 
@@ -106,35 +105,3 @@ Future<int> getNumPreference() async {
 
   return num;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

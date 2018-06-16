@@ -4,7 +4,6 @@ import 'package:appmenu/drink_view.dart';
 import 'package:appmenu/food_view.dart';
 import 'package:appmenu/shopping_cart.dart';
 import 'package:flutter/material.dart';
-import 'package:appmenu/main.dart';
 
 class IndexWidget extends StatefulWidget {
   IndexWidget({Key key}) : super(key: key);

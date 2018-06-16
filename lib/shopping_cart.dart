@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
 import 'package:appmenu/main.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class Order {
@@ -11,7 +11,7 @@ class Order {
   final List bebidas;
   final double finalPrice;
 
-  const Order (this.idMesa, this.platos, this.bebidas, this.finalPrice);
+  const Order(this.idMesa, this.platos, this.bebidas, this.finalPrice);
 }
 
 class ShoppingCart extends StatefulWidget {

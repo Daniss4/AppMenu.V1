@@ -70,7 +70,8 @@ class _FoodsPageState extends State<FoodsPage> {
                         style: new TextStyle(fontSize: 22.0)),
                     onTap: () {
                       _showOnTapMessage(context, _data[index]['name']);
-                      _saved(context, _data[index]['name'], _data[index]['price']);
+                      _saved(
+                          context, _data[index]['name'], _data[index]['price']);
                     }),
               ],
             );
