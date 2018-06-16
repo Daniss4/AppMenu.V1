@@ -1,22 +1,29 @@
+//import 'dart:async';
+
 import 'package:appmenu/drink_view.dart';
 import 'package:appmenu/food_view.dart';
 import 'package:appmenu/shopping_cart.dart';
 import 'package:flutter/material.dart';
+import 'package:appmenu/main.dart';
 
 class IndexWidget extends StatefulWidget {
-  final String table;
-
-  IndexWidget({Key key, this.table}) : super(key: key);
+  IndexWidget({Key key}) : super(key: key);
 
   @override
   _IndexWidget createState() => new _IndexWidget();
 }
 
 class _IndexWidget extends State<IndexWidget> {
+  int _num;
+
+  @override
+  void initState() {
+    getNumPreference().then(updateNum);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    String _tab = ('${widget.table}');
-
     return new Scaffold(
         appBar: new AppBar(
           title: new Text("Carta"),
@@ -29,9 +36,7 @@ class _IndexWidget extends State<IndexWidget> {
                   Navigator.push(
                       context,
                       new MaterialPageRoute(
-                          builder: (context) => new ShoppingCart(
-                                table: _tab,
-                              )));
+                          builder: (context) => new ShoppingCart()));
                 }),
           ],
         ),
@@ -43,7 +48,11 @@ class _IndexWidget extends State<IndexWidget> {
             new Container(
                 margin: const EdgeInsets.only(top: 12.0),
                 child: new RaisedButton(
-                    child: new Text('Bebidas'), onPressed: _bebidas))
+                    child: new Text('Bebidas'), onPressed: _bebidas)),
+            new Container(
+              child: new RaisedButton(
+                  child: new Text(_num.toString()),onPressed: null),
+            )
           ]),
         ));
   }
@@ -62,5 +71,11 @@ class _IndexWidget extends State<IndexWidget> {
         body: DrinksPage(),
       );
     }));
+  }
+
+  void updateNum(int num) {
+    setState(() {
+      this._num = num;
+    });
   }
 }
