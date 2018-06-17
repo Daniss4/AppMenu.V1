@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:appmenu/food_view.dart';
 import 'package:appmenu/shopping_cart_bebidas.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -44,16 +43,6 @@ class _DrinksPageState extends State<DrinksPage> {
         title: Text("Bebidas"),
         centerTitle: true,
         backgroundColor: Colors.lightBlue,
-        actions: <Widget>[
-          new IconButton(
-              icon: new Icon(Icons.local_pizza),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    new MaterialPageRoute(
-                        builder: (context) => new FoodsPage()));
-              }),
-        ],
       ),
       body: new ListView.builder(
           itemCount: _data == null ? 0 : _data.length,
