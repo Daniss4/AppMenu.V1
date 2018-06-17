@@ -15,7 +15,7 @@ class ShoppingCartBebidas extends StatefulWidget {
 class _ShoppingCartState extends State<ShoppingCartBebidas> {
   int _num;
   List _orderName;
-  double _orderPrice;
+//  double _orderPrice;
 
   @override
   void initState() {
@@ -27,7 +27,6 @@ class _ShoppingCartState extends State<ShoppingCartBebidas> {
   @override
   Widget build(BuildContext context) {
     final nameItems = _orderName;
-    print(nameItems);
 
     return new Scaffold(
         appBar: AppBar(

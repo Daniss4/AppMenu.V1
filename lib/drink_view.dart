@@ -15,6 +15,7 @@ class DrinksPage extends StatefulWidget {
 class _DrinksPageState extends State<DrinksPage> {
   List _data;
   List<String> _orderName = [];
+//  double _orderPrice;
 
   Future<String> getData() async {
     http.Response response = await http.get(
@@ -97,7 +98,6 @@ class _DrinksPageState extends State<DrinksPage> {
     List _menuName = _orderName;
     saveMenuNamePreference(_menuName);
 
-    print(_menuName);
   }
 }
 

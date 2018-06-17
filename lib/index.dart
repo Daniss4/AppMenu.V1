@@ -1,5 +1,3 @@
-//import 'dart:async';
-
 import 'package:appmenu/drink_view.dart';
 import 'package:appmenu/food_view.dart';
 import 'package:flutter/material.dart';
