@@ -38,14 +38,14 @@ class _IndexState extends State<Index> {
 
   @override
   Widget build(BuildContext context) {
-    //
+    // Representa la parte de la interfaz de usuario que será presentada en la vista de la aplicación
     return new Scaffold(
-        //
+        // Crea una vista para los widget con "material design"
         appBar: new AppBar(
-          //
-          title: Text('Mesa'), //
-          centerTitle: true, //
-          backgroundColor: Colors.blueAccent, //
+          // Defina la barra superior del widget
+          title: Text('Mesa'),
+          centerTitle: true,
+          backgroundColor: Colors.blueAccent,
         ),
         body: new Container(
           //
@@ -57,7 +57,7 @@ class _IndexState extends State<Index> {
               ),
               new Container(
                 margin: EdgeInsets.symmetric(horizontal: 25.5),
-                child: new DropdownButton<Table>(
+                child: new DropdownButton<Table>( //
                     value: selectedTable,
                     items: tables.map((Table table) {
                       return new DropdownMenuItem<Table>(
@@ -88,13 +88,13 @@ class _IndexState extends State<Index> {
     var router = new MaterialPageRoute(
         builder: (BuildContext context) => new IndexWidget());
     saveNumPreference(num).then((bool) {
-      Navigator.of(context).push(router);
+      Navigator.of(context).push(router); //
     });
   }
 }
 
 Future<bool> saveNumPreference(int num) async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
+  SharedPreferences prefs = await SharedPreferences.getInstance(); //
   prefs.setInt("mesa", num);
 
   return true;
