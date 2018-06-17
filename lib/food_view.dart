@@ -2,8 +2,10 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:appmenu/drink_view.dart';
+import 'package:appmenu/shopping_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class FoodsPage extends StatefulWidget {
   @override
@@ -70,24 +72,33 @@ class _FoodsPageState extends State<FoodsPage> {
                         style: new TextStyle(fontSize: 22.0)),
                     onTap: () {
                       _showOnTapMessage(context, _data[index]['name']);
-                      _saved(
-                          context, _data[index]['name'], _data[index]['price']);
+                      saveMenu();
+//                      _saved(context, _data[index]['name'], _data[index]['price']);
                     }),
               ],
             );
           }),
-//      floatingActionButton: new FloatingActionButton(
-//        child: new Icon(Icons.add_shopping_cart),
-//        onPressed: (){
-//          Navigator.push(
-//              context,
-//              new MaterialPageRoute(builder: (context) => new ShoppingCart()));
-//        },
-//        backgroundColor: Colors.lightBlue,
-//      ),
+      floatingActionButton: new FloatingActionButton(
+        child: new Icon(Icons.add_shopping_cart),
+        onPressed: (){
+          Navigator.push(
+              context,
+              new MaterialPageRoute(builder: (context) => new ShoppingCart()));
+        },
+        backgroundColor: Colors.lightBlue,
+      ),
     );
   }
+
+  void saveMenu() {
+    List<String> _menu = _order;
+    saveMenuPreference(_menu);
+
+    print(_menu);
+  }
 }
+
+List<String> _order = [];
 
 void _showOnTapMessage(BuildContext context, String _name) {
   var alert = new AlertDialog(
@@ -105,10 +116,23 @@ void _showOnTapMessage(BuildContext context, String _name) {
   showDialog(context: context, builder: (context) => alert);
 }
 
-List _order = [];
+//
+//void _saved(BuildContext context, String _name, double price) {
+//  _order.add([_name, price]);
+//
+//  print(_order);
+//}
 
-void _saved(BuildContext context, String _name, double price) {
-  _order.add([_name, price]);
+Future<bool> saveMenuPreference(List<String> _order) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.setStringList("pedido", _order);
 
-  print(_order);
+  return true;
+}
+
+Future<List> getMenuPreference() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  List _order = prefs.get("pedido");
+
+  return _order;
 }

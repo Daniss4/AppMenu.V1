@@ -42,10 +42,6 @@ class _ShoppingCartState extends State<ShoppingCart> {
         centerTitle: true,
         backgroundColor: Colors.orangeAccent,
       ),
-//      bottomNavigationBar: new BottomNavigationBar(items: [
-//        new BottomNavigationBarItem(icon: new Icon(Icons.build), title: new Text("€")),
-//        new BottomNavigationBarItem(icon: new Icon(Icons.add), title: new Text("Pedir"))
-//      ]),
     );
   }
 

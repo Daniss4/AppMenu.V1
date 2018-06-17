@@ -34,11 +34,6 @@ class _IndexState extends State<Index> {
     const Table(7)
   ];
 
-//  _savedValues() async {
-//    SharedPreferences prefs = await SharedPreferences.getInstance();
-//    prefs;
-//  }
-
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -86,7 +81,7 @@ class _IndexState extends State<Index> {
     int num = selectedTable.num;
     var router = new MaterialPageRoute(
         builder: (BuildContext context) => new IndexWidget());
-    saveNumPreference(num).then((bool commited) {
+    saveNumPreference(num).then((bool) {
       Navigator.of(context).push(router);
     });
   }
