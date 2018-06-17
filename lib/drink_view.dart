@@ -2,9 +2,10 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:appmenu/food_view.dart';
-import 'package:appmenu/shopping_cart.dart';
+import 'package:appmenu/shopping_cart_bebidas.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DrinksPage extends StatefulWidget {
   @override
@@ -13,6 +14,7 @@ class DrinksPage extends StatefulWidget {
 
 class _DrinksPageState extends State<DrinksPage> {
   List _data;
+  List<String> _orderName = [];
 
   Future<String> getData() async {
     http.Response response = await http.get(
@@ -71,21 +73,31 @@ class _DrinksPageState extends State<DrinksPage> {
                         style: new TextStyle(fontSize: 22.0)),
                     onTap: () {
                       _showOnTapMessage(context, _data[index]['name']);
-                      _saved(context, _data[index]['name']);
+//                      _saved(context, _data[index]['name']);
+                      saveMenu(_data[index]['name']);
                     }),
               ],
             );
           }),
       floatingActionButton: new FloatingActionButton(
         child: new Icon(Icons.add_shopping_cart),
-        onPressed: (){
+        onPressed: () {
           Navigator.push(
-            context,
-            new MaterialPageRoute(builder: (context) => new ShoppingCart()));
+              context,
+              new MaterialPageRoute(
+                  builder: (context) => new ShoppingCartBebidas()));
         },
         backgroundColor: Colors.lightBlue,
       ),
     );
+  }
+
+  void saveMenu(String _name) {
+    _orderName.add(_name);
+    List _menuName = _orderName;
+    saveMenuNamePreference(_menuName);
+
+    print(_menuName);
   }
 }
 
@@ -105,10 +117,9 @@ void _showOnTapMessage(BuildContext context, String _name) {
   showDialog(context: context, builder: (context) => alert);
 }
 
-List _order = [];
+Future<bool> saveMenuNamePreference(List _orderName) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.setStringList("orderBebidas", _orderName);
 
-void _saved(BuildContext context, String _name) {
-  _order.add(_name);
-
-  print(_order);
+  return true;
 }

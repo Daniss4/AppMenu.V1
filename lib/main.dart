@@ -18,6 +18,8 @@ class Table {
 }
 
 class Index extends StatefulWidget {
+  //Para crear un widget es necesario crear una clase que extienda de 'StatefulWidget' o de 'StatelessWidget'
+
   @override //La anotación 'override' indica sobreescritura de una clase superior con el mismo nombre
   _IndexState createState() => _IndexState();
 }
@@ -36,13 +38,17 @@ class _IndexState extends State<Index> {
 
   @override
   Widget build(BuildContext context) {
+    //
     return new Scaffold(
+        //
         appBar: new AppBar(
-          title: Text('Mesa'),
-          centerTitle: true,
-          backgroundColor: Colors.lightGreen,
+          //
+          title: Text('Mesa'), //
+          centerTitle: true, //
+          backgroundColor: Colors.blueAccent, //
         ),
         body: new Container(
+          //
           margin: EdgeInsets.only(top: 130.0, left: 10.0, right: 15.0),
           child: new ListView(
             children: <Widget>[

@@ -2,7 +2,6 @@
 
 import 'package:appmenu/drink_view.dart';
 import 'package:appmenu/food_view.dart';
-import 'package:appmenu/shopping_cart.dart';
 import 'package:flutter/material.dart';
 
 class IndexWidget extends StatefulWidget {
@@ -19,27 +18,27 @@ class _IndexWidget extends State<IndexWidget> {
         appBar: new AppBar(
           title: new Text("Carta"),
           centerTitle: true,
-          backgroundColor: Colors.lightGreen,
-          actions: <Widget>[
-            new IconButton(
-                icon: new Icon(Icons.add_shopping_cart),
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      new MaterialPageRoute(
-                          builder: (context) => new ShoppingCart()));
-                }),
-          ],
+          backgroundColor: Colors.blue,
+//          actions: <Widget>[
+//            new IconButton(
+//                icon: new Icon(Icons.add_shopping_cart),
+//                onPressed: () {
+//                  Navigator.push(
+//                      context,
+//                      new MaterialPageRoute(
+//                          builder: (context) => new ShoppingCartPlatos()));
+//                }),
+//          ],
         ),
         body: new Center(
           child: new Column(mainAxisSize: MainAxisSize.min, children: [
             new Container(
                 child: new RaisedButton(
-                    child: new Text('Platos'), onPressed: _platos)),
+                    child: new Text('Bebidas'), onPressed: _bebidas)),
             new Container(
                 margin: const EdgeInsets.only(top: 12.0),
                 child: new RaisedButton(
-                    child: new Text('Bebidas'), onPressed: _bebidas)),
+                    child: new Text('Platos'), onPressed: _platos)),
           ]),
         ));
   }

@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:appmenu/drink_view.dart';
-import 'package:appmenu/shopping_cart.dart';
+import 'package:appmenu/shopping_cart_platos.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -14,6 +14,8 @@ class FoodsPage extends StatefulWidget {
 
 class _FoodsPageState extends State<FoodsPage> {
   List _data;
+  List<String> _orderName = [];
+  double _orderPrice;
 
   Future<String> getData() async {
     http.Response response = await http.get(
@@ -23,9 +25,9 @@ class _FoodsPageState extends State<FoodsPage> {
 
     this.setState(() {
       _data = json.decode(response.body);
+      print(_data);
     });
-//  print(_data[1]["name"]);
-    return "Success!"; // returns a List type
+    return "Success!"; // Devuelve un tipo Lista
   }
 
   @override
@@ -41,7 +43,7 @@ class _FoodsPageState extends State<FoodsPage> {
       appBar: new AppBar(
         title: Text("Platos"),
         centerTitle: true,
-        backgroundColor: Colors.lightBlue,
+        backgroundColor: Colors.lightBlueAccent,
         actions: <Widget>[
           new IconButton(
               icon: new Icon(Icons.local_bar),
@@ -72,33 +74,32 @@ class _FoodsPageState extends State<FoodsPage> {
                         style: new TextStyle(fontSize: 22.0)),
                     onTap: () {
                       _showOnTapMessage(context, _data[index]['name']);
-                      saveMenu();
-//                      _saved(context, _data[index]['name'], _data[index]['price']);
+                      saveMenu(_data[index]['name']);
                     }),
               ],
             );
           }),
       floatingActionButton: new FloatingActionButton(
         child: new Icon(Icons.add_shopping_cart),
-        onPressed: (){
+        onPressed: () {
           Navigator.push(
               context,
-              new MaterialPageRoute(builder: (context) => new ShoppingCart()));
+              new MaterialPageRoute(
+                  builder: (context) => new ShoppingCartPlatos()));
         },
-        backgroundColor: Colors.lightBlue,
+        backgroundColor: Colors.lightBlueAccent,
       ),
     );
   }
 
-  void saveMenu() {
-    List<String> _menu = _order;
-    saveMenuPreference(_menu);
+  void saveMenu(String _name) {
+    _orderName.add(_name);
+    List _menuName = _orderName;
+    saveMenuNamePreference(_menuName);
 
-    print(_menu);
+    print(_menuName);
   }
 }
-
-List<String> _order = [];
 
 void _showOnTapMessage(BuildContext context, String _name) {
   var alert = new AlertDialog(
@@ -116,23 +117,9 @@ void _showOnTapMessage(BuildContext context, String _name) {
   showDialog(context: context, builder: (context) => alert);
 }
 
-//
-//void _saved(BuildContext context, String _name, double price) {
-//  _order.add([_name, price]);
-//
-//  print(_order);
-//}
-
-Future<bool> saveMenuPreference(List<String> _order) async {
+Future<bool> saveMenuNamePreference(List _orderName) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  prefs.setStringList("pedido", _order);
+  prefs.setStringList("orderPlatos", _orderName);
 
   return true;
-}
-
-Future<List> getMenuPreference() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  List _order = prefs.get("pedido");
-
-  return _order;
 }
