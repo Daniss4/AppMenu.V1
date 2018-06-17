@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:appmenu/food_view.dart';
 import 'package:appmenu/index.dart';
 import 'package:appmenu/main.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,7 @@ class ShoppingCartPlatos extends StatefulWidget {
 class _ShoppingCartState extends State<ShoppingCartPlatos> {
   int _num;
   List _orderName;
+
 //  double _orderPrice;
 
   @override
@@ -33,6 +35,14 @@ class _ShoppingCartState extends State<ShoppingCartPlatos> {
           title: Text("Pedido mesa $_num"),
           centerTitle: true,
           backgroundColor: Colors.lightBlueAccent,
+          actions: <Widget>[
+            new IconButton(
+                icon: new Icon(Icons.delete_forever),
+                onPressed: () {
+                  removeMenuPreference();
+                  _showOnTapMessageRemove(context);
+                }),
+          ],
         ),
         body: new ListView.builder(
             itemCount: nameItems == null ? 0 : nameItems.length,
@@ -48,12 +58,6 @@ class _ShoppingCartState extends State<ShoppingCartPlatos> {
                           fontStyle: FontStyle.italic,
                           fontWeight: FontWeight.bold),
                     ),
-                    trailing: new IconButton(
-                        onPressed: () {
-                          removeItem();
-                        },
-                        icon: new Icon(Icons.delete_forever),
-                        color: Colors.black54),
                   ),
                 ],
               );
@@ -79,6 +83,22 @@ class _ShoppingCartState extends State<ShoppingCartPlatos> {
       this._orderName = _orderName;
     });
   }
+}
+
+void _showOnTapMessageRemove(BuildContext context) {
+  var alert = new AlertDialog(
+    title: Text("Lista borrada correctamente"),
+    actions: <Widget>[
+      FlatButton(
+        child: Text("OK"),
+        onPressed: () {
+          Navigator.push(context,
+              new MaterialPageRoute(builder: (context) => new FoodsPage()));
+        },
+      )
+    ],
+  );
+  showDialog(context: context, builder: (context) => alert);
 }
 
 void _showOnTapMessage(BuildContext context) {

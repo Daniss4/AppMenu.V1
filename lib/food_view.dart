@@ -15,6 +15,7 @@ class FoodsPage extends StatefulWidget {
 class _FoodsPageState extends State<FoodsPage> {
   List _data;
   List<String> _orderName = [];
+
 //  double _orderPrice;
 
   Future<String> getData() async {
@@ -25,7 +26,6 @@ class _FoodsPageState extends State<FoodsPage> {
 
     this.setState(() {
       _data = json.decode(response.body);
-      print(_data);
     });
     return "Success!"; // Devuelve un tipo Lista
   }
@@ -96,7 +96,6 @@ class _FoodsPageState extends State<FoodsPage> {
     _orderName.add(_name);
     List _menuName = _orderName;
     saveMenuNamePreference(_menuName);
-
   }
 }
 

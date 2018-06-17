@@ -17,16 +17,6 @@ class _IndexWidget extends State<IndexWidget> {
           title: new Text("Carta"),
           centerTitle: true,
           backgroundColor: Colors.blue,
-//          actions: <Widget>[
-//            new IconButton(
-//                icon: new Icon(Icons.add_shopping_cart),
-//                onPressed: () {
-//                  Navigator.push(
-//                      context,
-//                      new MaterialPageRoute(
-//                          builder: (context) => new ShoppingCartPlatos()));
-//                }),
-//          ],
         ),
         body: new Center(
           child: new Column(mainAxisSize: MainAxisSize.min, children: [
